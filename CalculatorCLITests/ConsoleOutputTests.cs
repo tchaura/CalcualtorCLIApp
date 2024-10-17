@@ -3,6 +3,7 @@ namespace CalculatorCLITests;
 using ApprovalTests;
 using ApprovalTests.Reporters;
 
+[ApprovalTests.Namers.UseApprovalSubdirectory("Approvals")]
 [UseReporter(typeof(DiffReporter))]
 public class ConsoleOutputTests
 {

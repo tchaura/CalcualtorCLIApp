@@ -16,7 +16,7 @@ public static class CommandFactories
         {
             if (numbers.Length == 0)
             {
-                Console.WriteLine("Error: No numbers were given");
+                Console.WriteLine(Messages.NoNumbersGivenError);
                 return;
             }
             
@@ -27,24 +27,24 @@ public static class CommandFactories
             }
             catch
             {
-                Console.WriteLine("Error: Please provide valid numbers.");
+                Console.WriteLine(Messages.InvalidNumbersError);
                 return;
             }
             
             if (!@float && Array.Exists(parsedNumbers, number => number % 1 != 0))
             {
-                Console.WriteLine("Error: Cannot work with floating numbers without float flag");
+                Console.WriteLine(Messages.CannotWorkWithFloatsError);
                 return;
             }
 
             try
             {
                 var result = operation(parsedNumbers);
-                Console.WriteLine($"Result: {result}");
+                Console.WriteLine(Messages.ResultInfo, result);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine(Messages.CalculationError, ex.Message);
             }
         });
 
@@ -61,17 +61,17 @@ public static class CommandFactories
         {
             if (baseAndExponent.Length != 2)
             {
-                Console.WriteLine("Please provide both base and exponent.");
+                Console.WriteLine(Messages.BaseExponentRequiredError);
                 return;
             }
             try
             {
                 var result = Math.Pow(baseAndExponent[0], baseAndExponent[1]);
-                Console.WriteLine($"Result: {result}");
+                Console.WriteLine(string.Format(Messages.ResultInfo, result));
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine(string.Format(Messages.CalculationError, ex.Message));
             }
         });
 
@@ -88,17 +88,17 @@ public static class CommandFactories
         {
             if (number < 0)
             {
-                Console.WriteLine("Cannot calculate square root of a negative number.");
+                Console.WriteLine(Messages.NegativeSqrtError);
                 return;
             }
             try
             {
                 var result = Math.Sqrt(number);
-                Console.WriteLine($"Result: {result}");
+                Console.WriteLine(string.Format(Messages.ResultInfo, result));
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                Console.WriteLine(string.Format(Messages.CalculationError, ex.Message));
             }
         });
 

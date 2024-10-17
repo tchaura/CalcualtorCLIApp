@@ -1,1 +1,0 @@
-﻿Error: Division by zero is not allowed.
